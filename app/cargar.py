@@ -9,17 +9,17 @@ import os
 router = APIRouter(prefix="/cargar", tags=["Carga de datos"])
 
 TABLAS_PERMITIDAS = {
-    "departamentos": {
+    "departments": {
         "archivo": "departments.csv",
-        "columnas": ["id", "nombre"]
+        "columnas": ["id", "department"]
     },
-    "cargos": {
+    "jobs": {
         "archivo": "jobs.csv",
-        "columnas": ["id", "titulo"]
+        "columnas": ["id", "job"]
     },
-    "empleados": {
+    "hired_employees": {
         "archivo": "hired_employees.csv",
-        "columnas": ["id", "nombre", "fecha_contratacion", "id_departamento", "id_cargo"]
+        "columnas": ["id", "name", "datetime", "department_id", "job_id"]
     }
 }
 
@@ -36,11 +36,6 @@ def cargar_csv(nombre_tabla: str):
     try:
         df = pd.read_csv(ruta_archivo, header=None)
         df.columns = info["columnas"]
-
-        # Limpieza mínima para empleados
-        if nombre_tabla == "empleados":
-            df["id_departamento"] = pd.to_numeric(df["id_departamento"], errors='coerce').astype('Int64')
-            df["id_cargo"] = pd.to_numeric(df["id_cargo"], errors='coerce').astype('Int64')
 
         conn = obtener_conexion()
         df.to_sql(nombre_tabla, conn, if_exists='append', index=False)
