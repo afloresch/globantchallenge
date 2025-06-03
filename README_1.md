@@ -14,7 +14,7 @@ Esta API permite cargar datos históricos desde archivos CSV o desde solicitudes
 
 ---
 
-## 🛠Stack utilizado
+## Stack utilizado
 
 - **Lenguaje:** Python 3
 - **Framework:** FastAPI
