@@ -1,5 +1,8 @@
 from fastapi import FastAPI
 from app.consultas import router as consultas_router
+from app.database import inicializar_bd
+
+inicializar_bd()
 
 app = FastAPI(
     title="API de Métricas SQL",
