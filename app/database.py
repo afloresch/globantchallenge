@@ -18,28 +18,28 @@ def inicializar_bd():
     cursor = conn.cursor()
 
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS departamentos (
+        CREATE TABLE IF NOT EXISTS departments (
             id INTEGER PRIMARY KEY,
-            nombre TEXT NOT NULL
+            department TEXT NOT NULL
         )
     ''')
 
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS cargos (
+        CREATE TABLE IF NOT EXISTS jobs (
             id INTEGER PRIMARY KEY,
-            titulo TEXT NOT NULL
+            job TEXT NOT NULL
         )
     ''')
 
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS empleados (
+        CREATE TABLE IF NOT EXISTS hired_employees (
             id INTEGER PRIMARY KEY,
-            nombre TEXT NOT NULL,
-            id_departamento INTEGER,
-            id_cargo INTEGER,
-            fecha_contratacion TEXT,
-            FOREIGN KEY(id_departamento) REFERENCES departamentos(id),
-            FOREIGN KEY(id_cargo) REFERENCES cargos(id)
+            name TEXT NOT NULL,
+            datetime TEXT NOT NULL,
+            department_id INTEGER,
+            job_id INTEGER,
+            FOREIGN KEY(department_id) REFERENCES departments(id),
+            FOREIGN KEY(job_id) REFERENCES jobs(id)
         )
     ''')
 
