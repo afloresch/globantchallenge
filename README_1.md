@@ -41,7 +41,7 @@ section1_api/
 
 ---
 
-## ▶Cómo ejecutar
+## Cómo ejecutar
 
 1. Clona el repositorio y entra a la carpeta:
 ```bash
@@ -64,7 +64,7 @@ uvicorn app.main:app --reload
 
 ---
 
-## 📤 Endpoints principales
+## Endpoints principales
 
 ### `/cargar/csv/{nombre_tabla}`
 Carga datos desde un CSV localizado en `/data/`.  
@@ -78,7 +78,7 @@ Inserta un lote de registros en formato JSON (hasta 1000 filas).
 
 ---
 
-## 🧪 Ejemplo de uso (con `curl`)
+## Ejemplo de uso (con `curl`)
 
 ```bash
 curl -X POST http://localhost:8000/cargar/lote/departamentos \
@@ -88,9 +88,11 @@ curl -X POST http://localhost:8000/cargar/lote/departamentos \
 
 ---
 
-## 📌 Notas
+## Notas
 
 - En un entorno real, se reemplazaría SQLite por SQL Server usando `pyodbc`.
 - Este diseño modular permite hacer el cambio fácilmente con pocas modificaciones en `database.py`.
 
 ---
+
+
